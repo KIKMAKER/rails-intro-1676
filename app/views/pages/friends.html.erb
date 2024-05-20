@@ -1,0 +1,30 @@
+<!--Write regular html here-->
+<h1>Wooohooooo</h1>
+
+<h2>Our first rails view</h2>
+
+<h3>We are:</h3>
+<!--Or interpolate ruby into your code -->
+
+<% if @friends.any? %>
+<ul>
+  <% @friends.each do |friend| %>
+    <li><%= friend %></li>
+  <% end %>
+</ul>
+<% else %>
+  <p>No friends have that name</p>
+<% end %>
+
+<p>Who do you want to talk to?</p>
+
+<form action="/friends" method="get">
+  <input type="text" name="friend" value="<%= params[:friend] %>" placeholder="Type a name here">
+  <input type="submit">
+</form>
+
+<br>
+<!--Use the link_to helper to build links to other pages (in or outside of your app)-->
+<!--the format is: link_to 'text displayed', prefix_path-->
+<!--You can find the prefix by running rails routes in your terminal-->
+<%= link_to "Learn about us", about_path %>
